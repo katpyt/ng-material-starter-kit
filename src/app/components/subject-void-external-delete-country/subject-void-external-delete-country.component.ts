@@ -21,7 +21,7 @@ export class SubjectVoidExternalDeleteCountryComponent {
 
   onRemoveButtonClicked(countryId: string) {
     this._countryService.deleteCountry(countryId).subscribe(
-      () => this._countriesSubject.next()
+      () => this._countriesSubject.next() 
     )
   }
 
