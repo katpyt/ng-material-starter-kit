@@ -1,0 +1,25 @@
+<ng-container *ngIf="cryptoList$ | async as cryptoList; else loader;">
+    <mat-grid-list cols="2" rowHeight="2:1" *ngFor="let crypto of cryptoList">
+        <mat-grid-tile>{{ crypto.symbol }}</mat-grid-tile>
+        <mat-grid-tile>
+            <button mat-button color="primary" (click)="onShowPriceChangeButtonClicked(crypto.priceChange)">Show price change</button>
+            <ng-container *ngIf="cryptoPriceChangeInfo$ | async as cryptoPriceChangeInfo">
+                <ng-container *ngIf="crypto.priceChange == cryptoPriceChangeInfo; else empty">
+                    {{ cryptoPriceChangeInfo }}
+                </ng-container>
+            </ng-container>
+        </mat-grid-tile>
+    </mat-grid-list>
+</ng-container>
+
+<ng-template #loader>
+    <mat-progress-spinner
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+      </mat-progress-spinner>
+</ng-template>
+
+<ng-template #empty>
+
+</ng-template>

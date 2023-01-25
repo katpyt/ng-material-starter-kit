@@ -5,13 +5,18 @@
             <mat-list-item role="listitem" *ngFor="let product of products">
                 {{product.title}} {{product.price}}
                 <button mat-raised-button color="primary" (click)="onRemoveButtonClicked(product.id)">Remove</button>
+                <button mat-button color="primary" (click)="onDetailsButtonClicked(product.title)">Show details</button>
+                <ng-container *ngIf="productTitle$ | async as productTitle">
+                    <ng-container *ngIf="productTitle == product.title; else empty;">
+                        {{productTitle}}
+                    </ng-container>
+                </ng-container>
             </mat-list-item>
         </ng-container>
     </ng-container>
 </mat-list>
 
 <ng-template #empty>
-    There is no data.
 </ng-template>
 
 <ng-template #loader>

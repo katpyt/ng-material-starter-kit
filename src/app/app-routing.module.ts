@@ -9,6 +9,8 @@ import { SubjectVoidExternalUsersComponent } from './components/subject-void-ext
 import { SubjectVoidExternalRandomCatFactComponent } from './components/subject-void-external-random-cat-fact/subject-void-external-random-cat-fact.component';
 import { SubjectVoidExternalDeleteCountryComponent } from './components/subject-void-external-delete-country/subject-void-external-delete-country.component';
 import { ProductListRefreshDataLastexcerciseComponent } from './components/product-list-refresh-data-lastexcercise/product-list-refresh-data-lastexcercise.component';
+import { SubjectModelInMemoryCryptoComponent } from './components/subject-model-in-memory-crypto/subject-model-in-memory-crypto.component';
+import { SubjectModelInMemoryUserComponent } from './components/subject-model-in-memory-user/subject-model-in-memory-user.component';
 import { ProductListComponentModule } from './components/product-list/product-list.component-module';
 import { ListComponentModule } from './components/list/list.component-module';
 import { SubjectVoidInMemoryRandomNumberComponentModule } from './components/subject-void-in-memory-random-number/subject-void-in-memory-random-number.component-module';
@@ -17,6 +19,8 @@ import { SubjectVoidExternalUsersComponentModule } from './components/subject-vo
 import { SubjectVoidExternalRandomCatFactComponentModule } from './components/subject-void-external-random-cat-fact/subject-void-external-random-cat-fact.component-module';
 import { SubjectVoidExternalDeleteCountryComponentModule } from './components/subject-void-external-delete-country/subject-void-external-delete-country.component-module';
 import { ProductListRefreshDataLastexcerciseComponentModule } from './components/product-list-refresh-data-lastexcercise/product-list-refresh-data-lastexcercise.component-module';
+import { SubjectModelInMemoryCryptoComponentModule } from './components/subject-model-in-memory-crypto/subject-model-in-memory-crypto.component-module';
+import { SubjectModelInMemoryUserComponentModule } from './components/subject-model-in-memory-user/subject-model-in-memory-user.component-module';
 
 @NgModule({
   imports: [RouterModule.forRoot([
@@ -28,10 +32,10 @@ import { ProductListRefreshDataLastexcerciseComponentModule } from './components
     { path: 'subject-void-external-users', component: SubjectVoidExternalUsersComponent },
     { path: 'subject-void-external-random-cat-fact', component: SubjectVoidExternalRandomCatFactComponent },
     { path: 'subject-void-external-delete-country', component: SubjectVoidExternalDeleteCountryComponent },
-    { path: 'refresh-products', component: ProductListRefreshDataLastexcerciseComponent }
-  ]), ProductListComponentModule, ListComponentModule, SubjectVoidInMemoryRandomNumberComponentModule, 
-  SubjectVoidInMemoryRandomNamesComponentModule, SubjectVoidExternalUsersComponentModule, 
-  SubjectVoidExternalRandomCatFactComponentModule, SubjectVoidExternalDeleteCountryComponentModule, ProductListRefreshDataLastexcerciseComponentModule],
+    { path: 'refresh-products', component: ProductListRefreshDataLastexcerciseComponent },
+    { path: 'crypto', component: SubjectModelInMemoryCryptoComponent },
+    { path: 'subject-model-in-memory-user', component: SubjectModelInMemoryUserComponent }
+  ]), ProductListComponentModule, ListComponentModule, SubjectVoidInMemoryRandomNumberComponentModule, SubjectVoidInMemoryRandomNamesComponentModule, SubjectVoidExternalUsersComponentModule, SubjectVoidExternalRandomCatFactComponentModule, SubjectVoidExternalDeleteCountryComponentModule, ProductListRefreshDataLastexcerciseComponentModule, SubjectModelInMemoryCryptoComponentModule, SubjectModelInMemoryUserComponentModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
