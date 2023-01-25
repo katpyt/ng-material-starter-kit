@@ -1,0 +1,21 @@
+<mat-card *ngIf="catFact$ | async as catFact; else loader;">
+    <ng-container *ngIf="catFact.length; else empty;">
+        <mat-card-title>Random Cat Fact</mat-card-title>
+        <mat-card-content>{{catFact.fact}}</mat-card-content>
+        <mat-card-actions>
+            <button mat-button color="primary" (click)="onNextButtonClicked()">Next</button>
+        </mat-card-actions>
+    </ng-container>
+</mat-card>
+
+<ng-template #loader>
+    <mat-progress-spinner 
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+    </mat-progress-spinner>
+</ng-template>
+
+<ng-template #empty>
+    There is no data!
+</ng-template>
