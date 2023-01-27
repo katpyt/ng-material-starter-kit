@@ -11,6 +11,10 @@ import { SubjectVoidExternalDeleteCountryComponent } from './components/subject-
 import { ProductListRefreshDataLastexcerciseComponent } from './components/product-list-refresh-data-lastexcercise/product-list-refresh-data-lastexcercise.component';
 import { SubjectModelInMemoryCryptoComponent } from './components/subject-model-in-memory-crypto/subject-model-in-memory-crypto.component';
 import { SubjectModelInMemoryUserComponent } from './components/subject-model-in-memory-user/subject-model-in-memory-user.component';
+import { DetailsAgePredictionComponent } from './components/details-age-prediction/details-age-prediction.component';
+import { SubjectStringExternalSnackbarProductComponent } from './components/subject-string-external-snackbar-product/subject-string-external-snackbar-product.component';
+import { DetailsCatFactsComponent } from './components/details-cat-facts/details-cat-facts.component';
+import { DetailsProductComponent } from './components/details-product/details-product.component';
 import { ProductListComponentModule } from './components/product-list/product-list.component-module';
 import { ListComponentModule } from './components/list/list.component-module';
 import { SubjectVoidInMemoryRandomNumberComponentModule } from './components/subject-void-in-memory-random-number/subject-void-in-memory-random-number.component-module';
@@ -21,6 +25,11 @@ import { SubjectVoidExternalDeleteCountryComponentModule } from './components/su
 import { ProductListRefreshDataLastexcerciseComponentModule } from './components/product-list-refresh-data-lastexcercise/product-list-refresh-data-lastexcercise.component-module';
 import { SubjectModelInMemoryCryptoComponentModule } from './components/subject-model-in-memory-crypto/subject-model-in-memory-crypto.component-module';
 import { SubjectModelInMemoryUserComponentModule } from './components/subject-model-in-memory-user/subject-model-in-memory-user.component-module';
+import { DetailsAgePredictionComponentModule } from './components/details-age-prediction/details-age-prediction.component-module';
+import { SubjectStringExternalSnackbarProductComponentModule } from './components/subject-string-external-snackbar-product/subject-string-external-snackbar-product.component-module';
+import { FirstDialogComponentModule } from './components/first-dialog/first-dialog.component-module';
+import { DetailsCatFactsComponentModule } from './components/details-cat-facts/details-cat-facts.component-module';
+import { DetailsProductComponentModule } from './components/details-product/details-product.component-module';
 
 @NgModule({
   imports: [RouterModule.forRoot([
@@ -34,8 +43,13 @@ import { SubjectModelInMemoryUserComponentModule } from './components/subject-mo
     { path: 'subject-void-external-delete-country', component: SubjectVoidExternalDeleteCountryComponent },
     { path: 'refresh-products', component: ProductListRefreshDataLastexcerciseComponent },
     { path: 'crypto', component: SubjectModelInMemoryCryptoComponent },
-    { path: 'subject-model-in-memory-user', component: SubjectModelInMemoryUserComponent }
-  ]), ProductListComponentModule, ListComponentModule, SubjectVoidInMemoryRandomNumberComponentModule, SubjectVoidInMemoryRandomNamesComponentModule, SubjectVoidExternalUsersComponentModule, SubjectVoidExternalRandomCatFactComponentModule, SubjectVoidExternalDeleteCountryComponentModule, ProductListRefreshDataLastexcerciseComponentModule, SubjectModelInMemoryCryptoComponentModule, SubjectModelInMemoryUserComponentModule],
+    { path: 'subject-model-in-memory-user', component: SubjectModelInMemoryUserComponent },
+    { path: 'age', component: DetailsAgePredictionComponent },
+    { path: 'age/:name', component: DetailsAgePredictionComponent },
+    { path: 'subject-string-external-snackbar-product', component: SubjectStringExternalSnackbarProductComponent },
+    { path: 'cat-facts', component: DetailsCatFactsComponent },
+    { path: 'product/:id', component: DetailsProductComponent }
+  ]), ProductListComponentModule, ListComponentModule, SubjectVoidInMemoryRandomNumberComponentModule, SubjectVoidInMemoryRandomNamesComponentModule, SubjectVoidExternalUsersComponentModule, SubjectVoidExternalRandomCatFactComponentModule, SubjectVoidExternalDeleteCountryComponentModule, ProductListRefreshDataLastexcerciseComponentModule, SubjectModelInMemoryCryptoComponentModule, SubjectModelInMemoryUserComponentModule, DetailsAgePredictionComponentModule, SubjectStringExternalSnackbarProductComponentModule, FirstDialogComponentModule, DetailsCatFactsComponentModule, DetailsProductComponentModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

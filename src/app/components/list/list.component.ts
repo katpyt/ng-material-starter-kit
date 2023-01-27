@@ -17,7 +17,6 @@ export class ListComponent {
   }
 
   onAddButtonClicked() {
-
     // this._dialog.open(FirstDialogComponent, { 
     //   data: {title: 'my new title'}
     // });

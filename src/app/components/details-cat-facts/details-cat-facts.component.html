@@ -1,0 +1,14 @@
+<ng-container *ngIf="catFact$ | async as catFact; else loader">
+    <mat-card>
+        <mat-card-title>Cat facts</mat-card-title>
+        <mat-card-content>{{ catFact.fact }}</mat-card-content>
+    </mat-card>
+</ng-container>
+
+<ng-template #loader>
+    <mat-progress-spinner
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+      </mat-progress-spinner>
+</ng-template>
