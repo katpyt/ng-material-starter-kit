@@ -1,0 +1,28 @@
+<mat-selection-list role="list"
+                    fxLayout="row"
+                    [multiple]="false">
+    <ng-container *ngIf="sortValues$ | async as sortValues; else loader;">
+        <mat-list-option role="listoption"
+                         (click)="onSortingChanged(sort)"
+                         *ngFor="let sort of sortValues"
+                         [value]="sort">
+            {{sort}}
+        </mat-list-option>
+    </ng-container>
+</mat-selection-list>
+
+<mat-list role="list">
+    <ng-container *ngIf="userList$ | async as users; else loader;">
+        <mat-list-item role="listitem"
+                       *ngFor="let user of users">
+            {{user.email}}
+        </mat-list-item>
+    </ng-container>
+</mat-list>
+
+<ng-template #loader>
+    <mat-progress-spinner [color]="'primary'"
+                          [mode]="'indeterminate'"
+                          [value]="50">
+    </mat-progress-spinner>
+</ng-template>

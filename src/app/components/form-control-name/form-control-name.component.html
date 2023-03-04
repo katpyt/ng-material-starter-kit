@@ -1,0 +1,43 @@
+<div>
+    <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput
+               type="text"
+               placeholder="Name"
+               [formControl]="nameControl"
+               required>
+        <mat-error *ngIf="nameControl.invalid">Name is invalid</mat-error>
+    </mat-form-field><br />
+    <mat-form-field appearance="fill">
+        <mat-label>What is your age?</mat-label>
+        <input matInput
+               type="number"
+               placeholder="What is your age?"
+               [formControl]="ageControl"
+               required>
+        <mat-error *ngIf="ageControl.invalid">You are under age :(</mat-error>
+    </mat-form-field><br />
+    <mat-form-field appearance="fill">
+        <mat-label>Email</mat-label>
+        <input matInput
+               type="email"
+               placeholder="Email"
+               [formControl]="mailControl"
+               required>
+        <mat-error *ngIf="mailControl.invalid">Email is invalid</mat-error>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="fill">
+        <mat-label>Write your comment...</mat-label>
+        <textarea matInput
+                  type="text"
+                  placeholder="Write your comment..."
+                  [formControl]="commentControl"
+                  required></textarea>
+        <mat-error *ngIf="commentControl.invalid">Comment needs to have minimum 4 words</mat-error>
+    </mat-form-field>
+</div>
+Name: {{nameControl.valueChanges | async | json}}<br>
+Age: {{ageControl.valueChanges | async | json}}<br>
+Email: {{mailControl.valueChanges | async | json}}<br>
+Comment: {{commentControl.valueChanges | async | json}}

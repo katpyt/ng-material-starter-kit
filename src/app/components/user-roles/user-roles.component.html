@@ -1,0 +1,9 @@
+<mat-form-field appearance="fill">
+    <mat-label>Choose a user role</mat-label>
+    <mat-select [formControl]="userRoleControl">
+        <mat-option *ngFor="let item of userRolesList$ | async" [value]="item">
+            {{item.role}}
+        </mat-option>
+    </mat-select>
+    <mat-error *ngIf="userRoleControl.invalid">User role is required</mat-error>
+</mat-form-field>

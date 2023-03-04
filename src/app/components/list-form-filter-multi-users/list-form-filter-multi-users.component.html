@@ -1,0 +1,91 @@
+<h1>Filters</h1>
+<form [formGroup]="form">
+    <ng-container *ngIf="departmentsList$ | async as departments; else loaderBar;">
+        <div>
+            <ng-container *ngIf="departments.length > 0; else empty;">
+                <mat-form-field appearance="fill">
+                    <mat-label>Choose a department</mat-label>
+                    <mat-select formControlName="department">
+                        <mat-option *ngFor="let department of departments"
+                                    [value]="department.id">
+                            {{department.name}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </ng-container>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="rolesList$ | async as roles; else loaderBar;">
+        <div>
+            <mat-label>Choose a role</mat-label>
+            <div>
+                <ng-container *ngIf="roles.length > 0; else empty">
+                    <mat-radio-group formControlName="role">
+                        <mat-radio-button *ngFor="let role of roles"
+                                          [value]="role.id">{{role.role}}</mat-radio-button>
+                    </mat-radio-group>
+                </ng-container>
+            </div>
+        </div>
+    </ng-container>
+</form>
+<br><br>
+<h1>Users</h1>
+
+
+
+<ng-container *ngIf="usersList$ | async as users; else loaderSpinner;">
+    <ng-container *ngIf="users.length > 0; else empty;">
+        <table mat-table
+               [dataSource]="users"
+               class="mat-elevation-z8">
+            <ng-container matColumnDef="id">
+                <th mat-header-cell
+                    *matHeaderCellDef> Id </th>
+                <td mat-cell
+                    *matCellDef="let element"> {{ element.id }} </td>
+            </ng-container>
+            <ng-container matColumnDef="email">
+                <th mat-header-cell
+                    *matHeaderCellDef> Email </th>
+                <td mat-cell
+                    *matCellDef="let element"> {{ element.email }} </td>
+            </ng-container>
+            <ng-container matColumnDef="roleName">
+                <th mat-header-cell
+                    *matHeaderCellDef> RoleName </th>
+                <td mat-cell
+                    *matCellDef="let element"> {{ element.roleName }} </td>
+            </ng-container>
+            <ng-container matColumnDef="departmentName">
+                <th mat-header-cell
+                    *matHeaderCellDef> DepartmentName </th>
+                <td mat-cell
+                    *matCellDef="let element"> {{element.departmentName}} </td>
+            </ng-container>
+
+            <tr mat-header-row
+                *matHeaderRowDef="['id', 'email', 'roleName', 'departmentName']"></tr>
+            <tr mat-row
+                *matRowDef="let row; columns: ['id', 'email', 'roleName', 'departmentName'];"></tr>
+        </table>
+    </ng-container>
+</ng-container>
+
+<ng-template #loaderBar>
+    <mat-progress-bar class="example-margin"
+                      [color]="'primary'"
+                      [mode]="'indeterminate'"
+                      [value]="50">
+    </mat-progress-bar>
+</ng-template>
+
+<ng-template #loaderSpinner>
+    <mat-progress-spinner [color]="'primary'"
+                          [mode]="'indeterminate'"
+                          [value]="50">
+    </mat-progress-spinner>
+</ng-template>
+<ng-template #empty>
+    There is no data.
+</ng-template>

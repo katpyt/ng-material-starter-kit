@@ -1,0 +1,32 @@
+<mat-list role="list">
+    <ng-container *ngIf="beerList$ | async as beers; else loader">
+        <ng-container *ngIf="beers.length > 0; else empty">
+            <mat-list-item role="listitem"
+                           *ngFor="let beer of beers">
+                {{beer.name}}
+            </mat-list-item>
+        </ng-container>
+    </ng-container>
+</mat-list>
+
+<mat-paginator #paginator
+               *ngIf="pagination$ | async as pagination;"
+               [length]="pagination.length"
+               [pageSize]="pagination.pageSize"
+               [pageIndex]="pagination.pageIndex - 1"
+               [pageSizeOptions]="[5, 25, 50, 100]"
+               aria-label="Select page"
+               (page)="onPageSizeAndOageIndexChanged($event)">
+</mat-paginator>
+
+<ng-template #loader>
+    <mat-progress-spinner [color]="'primary'"
+                          [mode]="'indeterminate'"
+                          [value]="
+               50">
+    </mat-progress-spinner>
+</ng-template>
+
+<ng-template #empty>
+    There is no data.
+</ng-template>

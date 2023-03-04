@@ -1,0 +1,15 @@
+<ng-container *ngIf="productDetails$ | async as productDetails; else loader;">
+    <mat-card>
+        <mat-card-title>Product details</mat-card-title>
+        <mat-card-subtitle>{{ productDetails.title }}</mat-card-subtitle>
+        <mat-card-content>{{ productDetails.description }}</mat-card-content>
+    </mat-card>
+</ng-container>
+
+<ng-template #loader>
+<mat-progress-spinner
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+      </mat-progress-spinner>
+</ng-template>

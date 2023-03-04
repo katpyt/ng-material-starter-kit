@@ -1,0 +1,24 @@
+<ng-container *ngIf="userList$ | async as users; else loader">
+    <ng-container *ngIf="users.length > 0; else empty">
+        <mat-grid-list cols="2"
+                       rowHeight="2:1">
+            <mat-grid-tile *ngFor="let user of users">
+
+                <mat-card>
+                    <mat-card-title>{{user.userMail}}</mat-card-title>
+                    <mat-card-content>Role is {{user.role}} and works in: {{user.department}}</mat-card-content>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+    </ng-container>
+</ng-container>
+
+<ng-template #loader>
+    <mat-progress-spinner [color]="'primary'"
+                          [mode]="'indeterminate'"
+                          [value]="50">
+    </mat-progress-spinner>
+</ng-template>
+<ng-template #empty>
+    There is no data.
+</ng-template>

@@ -1,0 +1,33 @@
+<h1>Categories</h1>
+<div>
+    <mat-radio-group [formControl]="categoryControl">
+        <mat-radio-button *ngFor="let category of categoryList$ | async"
+                          [value]="category">
+            {{category}}
+        </mat-radio-button>
+    </mat-radio-group>
+</div>
+<br>
+<br>
+<h1>Products</h1>
+<ng-container *ngIf="productList$ | async as products; else loader;">
+    <ng-container *ngIf="products.length > 0; else empty;">
+        <mat-list role="list">
+            <mat-list-item role="listitem"
+                           *ngFor="let product of products">
+                {{product.title}} {{product.price}}
+            </mat-list-item>
+        </mat-list>
+    </ng-container>
+</ng-container>
+
+<ng-template #loader>
+    <mat-progress-spinner [color]="'primary'"
+                          [mode]="'indeterminate'"
+                          [value]="50">
+    </mat-progress-spinner>
+</ng-template>
+
+<ng-template #empty>
+    There is no data.
+</ng-template>

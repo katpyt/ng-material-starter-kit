@@ -1,0 +1,21 @@
+<h1>Crypto chips</h1>
+
+<mat-chip-list aria-label="Fish selection" *ngIf="list$ | async as list; else loader">
+    <ng-container *ngIf="list.length > 0; else empty">
+        <mat-chip *ngFor="let item of list">
+            {{item.symbol}}
+        </mat-chip>
+    </ng-container>
+</mat-chip-list>
+
+<ng-template #empty>
+    There is no data.
+</ng-template>
+
+<ng-template #loader>
+    <mat-progress-spinner
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+      </mat-progress-spinner>
+</ng-template>

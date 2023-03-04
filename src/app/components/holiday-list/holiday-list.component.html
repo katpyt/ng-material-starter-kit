@@ -1,0 +1,22 @@
+<mat-form-field appearance="fill">
+  <mat-label>Choose an option</mat-label>
+  <ng-container *ngIf="list$ | async as list; else loader">
+    <mat-select *ngIf="list.length >0; else empty" >
+        <mat-option *ngFor="let item of list" [value]="item">
+            {{item.name}}    
+        </mat-option>
+    </mat-select>
+    </ng-container>
+</mat-form-field>
+
+<ng-template #empty>
+    Ooops! There is nor data!
+</ng-template>
+
+<ng-template #loader>
+    <mat-progress-spinner
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+      </mat-progress-spinner>
+</ng-template>

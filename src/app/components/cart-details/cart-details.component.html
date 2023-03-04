@@ -1,0 +1,16 @@
+<ng-container *ngIf="cartDetails$ | async as item; else loader">
+
+    <mat-card>
+        <mat-card-title>Cart</mat-card-title>
+        <mat-card-content>You have {{ item.products.length }} products in cart</mat-card-content>
+    </mat-card>
+
+</ng-container>
+
+<ng-template #loader>
+<mat-progress-spinner
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+      </mat-progress-spinner>
+</ng-template>

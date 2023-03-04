@@ -1,0 +1,28 @@
+
+<mat-list role="list">
+    <ng-container *ngIf="productList$ | async as products; else loader">
+        <ng-container *ngIf="products.length > 0; else empty">
+            <mat-list-item role="listitem" *ngFor="let product of products" >
+                <button mat-button (click)="onProductClicked(product.id)">{{product.name}}</button>
+            </mat-list-item>
+        </ng-container>
+    </ng-container>
+</mat-list>
+
+<!-- <ng-container *ngIf="productMetadata$ | async as meta">
+    <ng-container>{{ meta }}
+    </ng-container>
+</ng-container> -->
+
+<ng-template #loader>
+    <mat-progress-spinner
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+      </mat-progress-spinner>
+</ng-template>
+
+<ng-template #empty>
+    There is no data.
+</ng-template>
+

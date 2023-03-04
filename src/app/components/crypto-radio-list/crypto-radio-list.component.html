@@ -1,0 +1,21 @@
+<mat-label>Choose an option</mat-label>      
+<div>
+    <mat-radio-group *ngIf="list$ | async as list; else loader">
+        <ng-container *ngIf="list.length > 0; else empty">
+            <mat-radio-button *ngFor="let item of list" [value]="item.symbol">
+                {{item.symbol}}
+            </mat-radio-button>
+        </ng-container>
+    </mat-radio-group>
+
+    <ng-template #empty>
+        There is no data.
+    </ng-template>
+    <ng-template #loader>
+        <mat-progress-spinner
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+      </mat-progress-spinner>
+    </ng-template>
+</div>

@@ -1,0 +1,27 @@
+<h1>Order by price</h1>
+<mat-selection-list role="list"
+                    fxLayout="row"
+                    [multiple]="false">
+    <mat-list-option role="listoption"
+                     (click)="onFilteringDirectionChanged(item)"
+                     *ngFor="let item of sortDirection$ | async"
+                     [value]="item">
+        {{item}}
+    </mat-list-option>
+</mat-selection-list>
+
+<mat-list role="list">
+    <ng-container *ngIf="productList$ | async as products; else loader;">
+        <mat-list-item role="listitem"
+                       *ngFor="let product of products">
+            {{product.title}}, price: {{product.price}}
+        </mat-list-item>
+    </ng-container>
+</mat-list>
+
+<ng-template #loader>
+    <mat-progress-spinner [color]="'primary'"
+                          [mode]="'indeterminate'"
+                          [value]="50">
+    </mat-progress-spinner>
+</ng-template>

@@ -1,0 +1,19 @@
+<h1>Categories list</h1>
+<section *ngIf="list$ | async as list; else loader">
+    <ng-container *ngIf="list.length > 0; else empty">
+        <mat-checkbox *ngFor="let item of list">
+            {{item}}
+        </mat-checkbox>
+    </ng-container>
+</section>
+
+<ng-template #empty>
+    <img src="../../../assets/no-data.jpg" width="500">
+</ng-template>
+
+<ng-template #loader>
+    <mat-progress-spinner [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+      </mat-progress-spinner>
+</ng-template>

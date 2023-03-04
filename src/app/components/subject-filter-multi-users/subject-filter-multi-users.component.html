@@ -1,0 +1,56 @@
+<mat-selection-list role="list"
+                    fxLayout="row"
+                    [multiple]="false">
+    <ng-container *ngIf="roleList$ | async as roles; else loaderHorizontal">
+        <mat-list-option role="listoption"
+                         (click)="onRoleFilteringChange(role.id)"
+                         *ngFor="let role of roles"
+                         [value]="role.id">
+            {{role.role}}
+        </mat-list-option>
+    </ng-container>
+</mat-selection-list>
+
+<mat-selection-list role="list"
+                    fxLayout="row"
+                    [multiple]="false">
+    <ng-container *ngIf="departmentList$ | async as depts; else loaderHorizontal">
+        <mat-list-option role="listoption"
+                         (click)="onDeptFilteringChange(dept.id)"
+                         *ngFor="let dept of depts"
+                         [value]="dept.id">
+            {{dept.name}}
+        </mat-list-option>
+    </ng-container>
+</mat-selection-list>
+
+<mat-list role="list">
+    <ng-container *ngIf="userList$ | async as users; else loader">
+        <ng-container *ngIf="users.length > 0; else empty">
+            <mat-list-item role="listitem"
+                           *ngFor="let user of users">
+                {{user.email}}
+            </mat-list-item>
+        </ng-container>
+    </ng-container>
+</mat-list>
+
+
+<ng-template #loaderHorizontal>
+    <mat-progress-bar class="example-margin"
+                      [color]="'primary'"
+                      [mode]="'indeterminate'"
+                      [value]="50">
+    </mat-progress-bar>
+</ng-template>
+
+<ng-template #loader>
+    <mat-progress-spinner [color]="'primary'"
+                          [mode]="'indeterminate'"
+                          [value]="50">
+    </mat-progress-spinner>
+</ng-template>
+
+<ng-template #empty>
+    There is not data.
+</ng-template>

@@ -1,0 +1,67 @@
+<mat-selection-list role="list"
+                    fxLayout="row"
+                    [multiple]="false">
+    <mat-list-option role="listoption"
+                     *ngFor="let item of sortDirections$ | async"
+                     [value]="item"
+                     (click)="onSortingDirectionChanged(item)">
+        {{item}}
+    </mat-list-option>
+</mat-selection-list>
+
+<mat-selection-list role="list"
+                    fxLayout="row"
+                    [multiple]="false">
+    <ng-container *ngIf="roleList$ | async as roles; else loader">
+        <mat-list-option role="listoption"
+                         *ngFor="let role of roles"
+                         [value]="role.id"
+                         (click)="onFilteringRoleChanged(role.id)">
+            {{role.role}} {{role.id}}
+        </mat-list-option>
+    </ng-container>
+</mat-selection-list>
+
+<mat-selection-list role="list"
+                    fxLayout="row"
+                    [multiple]="false">
+    <ng-container *ngIf="departmentList$ | async as depts; else loader">
+        <mat-list-option role="listoption"
+                         *ngFor="let dept of depts"
+                         [value]="dept.id"
+                         (click)="onFilteringDeptChanged(dept.id)">
+            {{dept.name}} {{dept.id}}
+        </mat-list-option>
+    </ng-container>
+</mat-selection-list>
+
+<mat-list role="list">
+    <ng-container *ngIf="userList$ | async as users; else loaderSpinner">
+        <ng-container *ngIf="users.length > 0; else empty">
+            <mat-list-item role="listitem"
+                           *ngFor="let user of users">
+                {{user.email}}, userDeptId: {{user.departmentId}}, userRoleId: {{user.roleId}},
+            </mat-list-item>
+        </ng-container>
+    </ng-container>
+</mat-list>
+
+
+<ng-template #loader>
+    <mat-progress-bar class="example-margin"
+                      [color]="'primary'"
+                      [mode]="'indeterminate'"
+                      [value]="50">
+    </mat-progress-bar>
+</ng-template>
+
+<ng-template #loaderSpinner>
+    <mat-progress-spinner [color]="'primary'"
+                          [mode]="'indeterminate'"
+                          [value]="50">
+    </mat-progress-spinner>
+</ng-template>
+
+<ng-template #empty>
+    There is no data.
+</ng-template>

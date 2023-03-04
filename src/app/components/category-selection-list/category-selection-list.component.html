@@ -1,0 +1,20 @@
+<h1>Select category</h1>
+<mat-selection-list role="list"  *ngIf="list$ | async as list; else loader">
+    <ng-container *ngIf="list.length > 0; else empty">
+        <mat-list-option role="listitem" *ngFor="let item of list">
+            {{item}}
+        </mat-list-option>
+    </ng-container>
+</mat-selection-list>
+
+<ng-template #empty>
+    There is no data.
+</ng-template>
+
+<ng-template #loader>
+    <mat-progress-spinner
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+      </mat-progress-spinner>
+</ng-template>

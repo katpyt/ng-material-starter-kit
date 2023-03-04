@@ -1,0 +1,26 @@
+<h1>Influencers and followers</h1>
+<ng-container *ngIf="list$ | async as list; else loader">
+    <mat-list role="list" *ngIf="list.length > 0; else empty">
+        <mat-list-item role="listitem" *ngFor="let item of list">
+            <img src="{{item.avatar}}" height="50px" style="border-radius: 50%;"> 
+            {{item.name}}
+            <mat-chip-list aria-label="Fish selection">
+                <mat-chip *ngFor="let itemFollower of item.followedBy">
+                    {{itemFollower.name}}
+                </mat-chip>
+            </mat-chip-list>
+        </mat-list-item>
+    </mat-list>
+</ng-container>
+
+<ng-template #empty>
+    Ooops! There is no data!
+</ng-template>
+
+<ng-template #loader>
+  <mat-progress-spinner
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+      </mat-progress-spinner>
+</ng-template>

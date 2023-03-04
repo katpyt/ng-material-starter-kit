@@ -1,0 +1,36 @@
+<h1>Product Search</h1>
+
+<mat-form-field appearance="fill">
+    <input matInput
+           type="text"
+           placeholder="Search for product title"
+           [formControl]="searchControl">
+    <!-- <mat-error *ngIf="searchControl.invalid">$formControlName$ is invalid</mat-error> -->
+</mat-form-field>
+<br><br>
+
+<h1>Products</h1>
+<ng-container *ngIf="!searchControl.invalid; then emptyString; else emptySearch"></ng-container>
+<ng-container *ngIf="productsList$ | async as products;">
+    <ng-container *ngIf="products.length > 0; else emptySearch">
+        <mat-list role="list">
+            <mat-list-item role="listitem"
+                           *ngFor="let product of products">
+                {{product.title}}, {{product.price}}
+            </mat-list-item>
+        </mat-list>
+    </ng-container>
+</ng-container>
+
+<!-- {{ searchControl.valueChanges | async | json}} -->
+<ng-template #loader>
+    <mat-progress-spinner [color]="'primary'"
+                          [mode]="'indeterminate'"
+                          [value]="20">
+    </mat-progress-spinner>
+</ng-template>
+<ng-template #emptySearch>
+    Oops there are no products...
+</ng-template>
+<ng-template #emptyString>
+</ng-template>

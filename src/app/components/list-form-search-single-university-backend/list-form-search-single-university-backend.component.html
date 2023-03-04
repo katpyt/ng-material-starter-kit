@@ -1,0 +1,36 @@
+<mat-form-field appearance="fill">
+    <input matInput
+           type="text"
+           placeholder="Country"
+           [formControl]="countryName">
+</mat-form-field>
+<br>
+<ng-container *ngIf="!countryName.invalid; then emptyString; else emptyCountryString"></ng-container>
+
+<ng-container *ngIf="universitiesList$ | async as universities;">
+    <ng-container *ngIf="universities.length > 0; else emptySearch">
+        <mat-list role="list">
+            <mat-list-item role="listitem"
+                           *ngFor="let uni of universities">
+                {{ uni.name }}, <label style="font-weight: bold;">{{ uni.country }}</label>
+            </mat-list-item>
+        </mat-list>
+    </ng-container>
+</ng-container>
+<!-- {{ countryName.valueChanges | async | json}} -->
+
+<ng-template #loader>
+    <mat-progress-spinner [color]="'primary'"
+                          [mode]="'indeterminate'"
+                          [value]="50">
+    </mat-progress-spinner>
+</ng-template>
+
+<ng-template #emptyCountryString>
+    Type any valid country in searchbox above
+</ng-template>
+<ng-template #emptySearch>
+    Did not find any universities for this country :(
+</ng-template>
+<ng-template #emptyString>
+</ng-template>

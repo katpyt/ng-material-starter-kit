@@ -1,0 +1,27 @@
+<mat-list role="list"
+          fxLayout="row">
+    <mat-list-item role="listitem"
+                   *ngFor="let item of sortDirections$ | async">
+        <a [routerLink]="[]"
+           [queryParams]="{sort: item}">{{item}}</a>
+    </mat-list-item>
+</mat-list>
+<ng-container *ngIf="productsList$ | async as products; else loader">
+    <ng-container *ngIf="products.length > 0; else empty">
+        <mat-chip-list aria-label="Fish selection">
+            <mat-chip *ngFor="let product of products">
+                {{product.title}}
+            </mat-chip>
+        </mat-chip-list>
+    </ng-container>
+</ng-container>
+
+<ng-template #loader>
+    <mat-progress-spinner [color]="'primary'"
+                          [mode]="'indeterminate'"
+                          [value]="50">
+    </mat-progress-spinner>
+</ng-template>
+<ng-template #empty>
+    There is no data.
+</ng-template>

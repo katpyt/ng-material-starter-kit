@@ -1,0 +1,12 @@
+<form [formGroup]="jobTagsForm" (ngSubmit)="onJobTagsSubmitted(jobTagsForm)">
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Job Tag Name</mat-label>
+            <input matInput type="text" placeholder="Job Tag Name" formControlName="name" required>
+            <mat-error *ngIf="jobTagsForm.get('name')!.invalid">jobTagName is invalid</mat-error>
+        </mat-form-field>
+    </div>
+    <div>
+        <button type="submit" mat-raised-button color="primary">Submit</button>
+    </div>
+</form>

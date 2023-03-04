@@ -1,0 +1,21 @@
+<h1>Show sorted products</h1>
+<ng-container *ngIf="selectedSortDirection$ | async as selectedSortDirection">
+    <button mat-raised-button
+            (click)="onSortingDirectionChanged(selectedSortDirection)">Sort {{sortDirections$ | async}}</button>
+</ng-container>
+
+<mat-list role="list">
+    <ng-container *ngIf="productList$ | async as products; else loader;">
+        <mat-list-item role="listitem"
+                       *ngFor="let product of products">
+            {{product.title}}
+        </mat-list-item>
+    </ng-container>
+</mat-list>
+
+<ng-template #loader>
+    <mat-progress-spinner [color]="'primary'"
+                          [mode]="'indeterminate'"
+                          [value]="50">
+    </mat-progress-spinner>
+</ng-template>

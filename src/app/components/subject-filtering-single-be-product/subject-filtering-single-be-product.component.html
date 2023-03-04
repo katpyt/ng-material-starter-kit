@@ -1,0 +1,28 @@
+<mat-selection-list role="list"
+                    fxLayout="row"
+                    [multiple]="false">
+    <ng-container *ngIf="categoryList$ | async as categories; else loader;">
+        <mat-list-option role="listoption"
+                         (click)="onFilteringCategoryChanged(category)"
+                         *ngFor="let category of categories"
+                         [value]="category">
+            {{category}}
+        </mat-list-option>
+    </ng-container>
+</mat-selection-list>
+
+<mat-list role="list">
+    <ng-container *ngIf="productList$ | async as products; else loader;">
+        <mat-list-item role="listitem"
+                       *ngFor="let product of products">
+            {{product.title}}
+        </mat-list-item>
+    </ng-container>
+</mat-list>
+
+<ng-template #loader>
+    <mat-progress-spinner [color]="'primary'"
+                          [mode]="'indeterminate'"
+                          [value]="50">
+    </mat-progress-spinner>
+</ng-template>

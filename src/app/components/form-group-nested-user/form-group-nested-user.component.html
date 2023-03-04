@@ -1,0 +1,158 @@
+<form [formGroup]="addFullUser"
+      (ngSubmit)="onAddFullUserSubmitted(addFullUser)">
+   <div>
+      <mat-form-field appearance="fill">
+         <mat-label>Email</mat-label>
+         <input matInput
+                type="text"
+                placeholder="Email"
+                formControlName="email"
+                required>
+         <mat-error *ngIf="addFullUser.get('email')!.invalid">email is invalid</mat-error>
+      </mat-form-field>
+   </div>
+
+   <div>
+      <mat-form-field appearance="fill">
+         <mat-label>Username</mat-label>
+         <input matInput
+                type="text"
+                placeholder="Username"
+                formControlName="userName"
+                required>
+         <mat-error *ngIf="addFullUser.get('userName')!.invalid">username is invalid</mat-error>
+      </mat-form-field>
+   </div>
+
+   <div>
+      <mat-form-field appearance="fill">
+         <mat-label>Password</mat-label>
+         <input matInput
+                type="text"
+                placeholder="Password"
+                formControlName="password"
+                required>
+         <mat-error *ngIf="addFullUser.get('password')!.invalid">password is invalid</mat-error>
+      </mat-form-field>
+   </div>
+
+   <fieldset formGroupName="name">
+      <label>Name</label>
+      <div>
+         <mat-form-field appearance="fill">
+            <mat-label>First Name</mat-label>
+            <input matInput
+                   type="text"
+                   placeholder="First Name"
+                   formControlName="firstName"
+                   required>
+            <mat-error *ngIf="addFullUser.get('name.firstName')!.invalid">firstName is invalid</mat-error>
+         </mat-form-field>
+      </div>
+      <div>
+         <mat-form-field appearance="fill">
+            <mat-label>Last Name</mat-label>
+            <input matInput
+                   type="text"
+                   placeholder="Last Name"
+                   formControlName="lastName"
+                   required>
+            <mat-error *ngIf="addFullUser.get('name.lastName')!.invalid">lastName is invalid</mat-error>
+         </mat-form-field>
+      </div>
+   </fieldset>
+
+
+   <fieldset formGroupName="address">
+      <label>Address</label>
+      <div>
+         <mat-form-field appearance="fill">
+            <mat-label>City</mat-label>
+            <input matInput
+                   type="text"
+                   placeholder="City"
+                   formControlName="city"
+                   required>
+            <mat-error *ngIf="addFullUser.get('address.city')!.invalid">city is invalid</mat-error>
+         </mat-form-field>
+      </div>
+      <div>
+         <mat-form-field appearance="fill">
+            <mat-label>Street</mat-label>
+            <input matInput
+                   type="text"
+                   placeholder="Street"
+                   formControlName="street"
+                   required>
+            <mat-error *ngIf="addFullUser.get('address.street')!.invalid">street is invalid</mat-error>
+         </mat-form-field>
+      </div>
+      <div>
+         <mat-form-field appearance="fill">
+            <mat-label>Number</mat-label>
+            <input matInput
+                   type="number"
+                   placeholder="Number"
+                   formControlName="number"
+                   required>
+            <mat-error *ngIf="addFullUser.get('address.number')!.invalid">number is invalid</mat-error>
+         </mat-form-field>
+      </div>
+      <div>
+         <mat-form-field appearance="fill">
+            <mat-label>Zipcode</mat-label>
+            <input matInput
+                   type="text"
+                   placeholder="Zipcode"
+                   formControlName="zipcode"
+                   required>
+            <mat-error *ngIf="addFullUser.get('address.zipcode')!.invalid">zipcode is invalid</mat-error>
+         </mat-form-field>
+      </div>
+
+      <fieldset formGroupName="geolocation">
+         <label>Geolocation</label>
+         <div>
+            <mat-form-field appearance="fill">
+               <mat-label>Lat</mat-label>
+               <input matInput
+                      type="text"
+                      placeholder="Lat"
+                      formControlName="lat"
+                      required>
+               <mat-error *ngIf="addFullUser.get('address.geolocation.lat')!.invalid">lat is invalid</mat-error>
+            </mat-form-field>
+         </div>
+         <div>
+            <mat-form-field appearance="fill">
+               <mat-label>Long</mat-label>
+               <input matInput
+                      type="text"
+                      placeholder="Long"
+                      formControlName="long"
+                      required>
+               <mat-error *ngIf="addFullUser.get('address.geolocation.long')!.invalid">long is invalid</mat-error>
+            </mat-form-field>
+         </div>
+      </fieldset>
+   </fieldset>
+   <div>
+      <mat-form-field appearance="fill">
+         <mat-label>Phone</mat-label>
+         <input matInput
+                type="text"
+                placeholder="Phone"
+                formControlName="phone"
+                required>
+         <mat-error *ngIf="addFullUser.get('phone')!.invalid">phone is invalid</mat-error>
+      </mat-form-field>
+   </div>
+   <div><button type="submit"
+              [disabled]="addFullUser.invalid"
+              mat-raised-button
+              color="primary">Submit</button></div>
+</form>
+
+
+<br>
+{{addFullUser.valueChanges | async | json }}

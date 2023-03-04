@@ -1,0 +1,17 @@
+<ng-container *ngIf="userDetails$ | async as item; else loader;">
+    <mat-card>
+        <mat-card-title>User details</mat-card-title>
+        <mat-card-content>
+            <mat-card-title>{{ item.name.firstname }} {{ item.name.lastname }}</mat-card-title>
+            <mat-card-subtitle>{{ item.email }}</mat-card-subtitle>
+        </mat-card-content>
+    </mat-card>
+</ng-container>
+
+<ng-template #loader>
+    <mat-progress-spinner
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+      </mat-progress-spinner>
+</ng-template>

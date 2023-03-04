@@ -1,0 +1,22 @@
+<ng-container *ngIf="list$ | async as list; else loader">
+<mat-grid-list cols="2" rowHeight="100px" *ngIf="list.length > 0; else empty">
+    <mat-grid-tile *ngFor="let item of list">
+        <mat-card>
+            <mat-card-title>{{item.title}}</mat-card-title>
+            <mat-card-content>{{item.description}}</mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>
+</ng-container>
+
+<ng-template #empty>
+    Ooops! There is no data!
+</ng-template>
+
+<ng-template #loader>
+    <mat-progress-spinner
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+      </mat-progress-spinner>
+</ng-template>

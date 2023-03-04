@@ -1,0 +1,72 @@
+<h1>Product List</h1>
+
+<ng-container *ngIf="productList$ | async as products; else loader;">
+    <ng-container *ngIf="products.length > 0; else empty;">
+        
+        <mat-grid-list cols="2" rowHeight="8:1" *ngFor="let product of products" style="border: solid 1px navy;">        
+            <mat-grid-tile style="border: solid 1px navy;">
+                {{product.title}} {{product.price}}
+                <button mat-raised-button color="primary" (click)="onRemoveButtonClicked(product.id)">Remove</button>
+                <button mat-button color="primary" (click)="onDetailsButtonClicked(product.title)">Show details</button>
+                <button mat-button color="primary" (click)="onShowProductInCategoryButtonClicked(product.category)">Show products in category</button>
+                <ng-container *ngIf="productTitle$ | async as productTitle">
+                    <ng-container *ngIf="productTitle == product.title; else empty;">
+                        {{productTitle}}
+                    </ng-container>
+                </ng-container>
+            </mat-grid-tile>
+            <mat-grid-tile style="border: solid 1px navy;">
+                
+                <mat-card *ngIf="productCategory$ | async as productsInCategory;">
+                    <mat-list role="list" *ngFor="let item of productsInCategory">
+                        <mat-list-item role="listitem" >
+                            {{item.title}}
+                        </mat-list-item>
+                    </mat-list>
+                </mat-card>
+            </mat-grid-tile>
+        </mat-grid-list>
+        
+    </ng-container>
+    
+</ng-container> 
+
+
+<!-- <mat-list role="list">
+    <ng-container *ngIf="productList$ | async as products; else loader;">
+        <ng-container *ngIf="products.length > 0; else empty;">
+            <mat-list-item role="listitem" *ngFor="let product of products">
+                {{product.title}} {{product.price}}
+                <button mat-raised-button color="primary" (click)="onRemoveButtonClicked(product.id)">Remove</button>
+                <button mat-button color="primary" (click)="onDetailsButtonClicked(product.title)">Show details</button>
+                <button mat-button color="primary" (click)="onShowProductInCategoryButtonClicked(product.category)">Show products in category</button>
+                <ng-container *ngIf="productTitle$ | async as productTitle">
+                    <ng-container *ngIf="productTitle == product.title; else empty;">
+                        {{productTitle}}
+                    </ng-container>
+                </ng-container>
+            </mat-list-item>
+                <mat-card *ngIf="productCategory$ | async as productsInCategory;">
+                    <mat-card-title></mat-card-title>
+                    <mat-card-content>
+                        <mat-list role="list">
+                            <mat-list-item role="listitem" *ngFor="let item of productsInCategory">
+                                {{item.title}}
+                            </mat-list-item>
+                        </mat-list>
+                    </mat-card-content>
+                </mat-card>
+        </ng-container>
+    </ng-container>
+</mat-list> -->
+
+<ng-template #empty>
+</ng-template>
+
+<ng-template #loader>
+    <mat-progress-spinner
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+      </mat-progress-spinner>
+</ng-template>

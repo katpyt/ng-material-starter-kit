@@ -1,0 +1,30 @@
+<ng-container *ngIf="userDetails$ | async as userDetails;">
+    <mat-card>
+        <mat-card-title><img src="{{userDetails.avatar}}" alt="user photo"></mat-card-title>
+        <mat-card-content>{{userDetails.name}}</mat-card-content>
+        <mat-card-actions>
+            <button mat-mini-fab (click)="onCancelClicked()"><mat-icon>cancel</mat-icon></button>
+        </mat-card-actions>
+    </mat-card>
+</ng-container>
+
+<h1>User List</h1>
+    <mat-chip-list aria-label="Fish selection" *ngIf="userList$ | async as userList; else loader">
+        <ng-container *ngIf="userList.length > 0; else empty;">
+            <mat-chip *ngFor="let user of userList" (click)="onNameClicked(user)">
+                {{user.name}}
+            </mat-chip>
+        </ng-container>
+    </mat-chip-list>
+
+<ng-template #loader>
+    <mat-progress-spinner
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+      </mat-progress-spinner>
+</ng-template>
+
+<ng-template #empty>
+    There is no data.
+</ng-template>

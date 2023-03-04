@@ -1,0 +1,25 @@
+<h1>Crypto list</h1>
+<mat-chip-list aria-label="Fish selection">
+    <mat-chip *ngFor="let crypto of selectedCrypto.controls">
+        {{crypto.value}}
+    </mat-chip>
+</mat-chip-list>
+<br><br>
+
+<mat-form-field appearance="fill">
+    <mat-label>Choose an option</mat-label>
+    <input type="text"
+           placeholder="Select crypto"
+           matInput
+           [formControl]="cryptoControl"
+           [matAutocomplete]="cryptoAutocomplete">
+    <mat-autocomplete #cryptoAutocomplete="matAutocomplete"
+                      (optionSelected)="onSelected($event)">
+        <mat-option *ngFor="let crypto of cryptoList$ | async"
+                    [value]="crypto.symbol">
+            {{crypto.symbol}}
+        </mat-option>
+    </mat-autocomplete>
+</mat-form-field>
+
+<!-- {{cryptoControl.valueChanges | async | json}} -->

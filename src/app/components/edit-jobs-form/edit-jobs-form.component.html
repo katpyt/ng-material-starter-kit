@@ -1,0 +1,38 @@
+<ng-container *ngIf="details$ | async as item; else loader;">{{ item | json }}
+
+    <form [formGroup]="jobDetailsForm" (ngSubmit)="onJobDetailsSubmitted(jobDetailsForm)">
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Title</mat-label>
+                <input matInput type="text" placeholder="Title" formControlName="name" required>
+                <mat-error *ngIf="jobDetailsForm.get('name')!.invalid">title is invalid</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <mat-form-field appearance="fill">
+                <mat-label>Description</mat-label>
+                <input matInput type="text" placeholder="Description" formControlName="description" required>
+                <mat-error *ngIf="jobDetailsForm.get('description')!.invalid">description is invalid</mat-error>
+            </mat-form-field>
+        </div>
+        <div>
+            <section>
+                <mat-checkbox *ngFor="let item of tags$ | async" formControlName="item" checked="">
+                    {{item}}
+                </mat-checkbox>
+            </section>
+        </div>
+        <div>
+            <button type="submit" mat-raised-button color="primary">Submit</button>
+        </div>
+    </form>
+
+</ng-container>
+
+<ng-template #loader>
+    <mat-progress-spinner
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+      </mat-progress-spinner>
+</ng-template>

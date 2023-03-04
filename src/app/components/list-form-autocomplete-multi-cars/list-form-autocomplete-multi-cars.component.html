@@ -1,0 +1,87 @@
+<form [formGroup]="filtersForm">
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Choose a brand</mat-label>
+            <input type="text"
+                   placeholder="Pick one"
+                   matInput
+                   formControlName="brand"
+                   [matAutocomplete]="brandAutocomplete">
+            <mat-autocomplete #brandAutocomplete="matAutocomplete">
+                <mat-option *ngFor="let brand of brandList$ | async"
+                            [value]="brand.name">
+                    {{brand.name}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Security Feature</mat-label>
+            <input matInput
+                   type="text"
+                   placeholder="Security Feature"
+                   formControlName="securityFeature"
+                   [matAutocomplete]="securityFeatureAutocomplete">
+            <mat-autocomplete #securityFeatureAutocomplete="matAutocomplete">
+                <mat-option *ngFor="let securityFeature of securityFeatureList$ | async"
+                            [value]="securityFeature.name">
+                    {{securityFeature.name}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </div>
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Comfort Feature</mat-label>
+            <input matInput
+                   type="text"
+                   placeholder="Comfort Feature"
+                   formControlName="comfortFeature"
+                   [matAutocomplete]="comfortFeatureAutocomplete">
+            <mat-autocomplete #comfortFeatureAutocomplete="matAutocomplete">
+                <mat-option *ngFor="let comfortFeature of comfortFeatureList$ | async"
+                            [value]="comfortFeature.name">
+                    {{comfortFeature.name}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </div>
+</form>
+
+<ng-container *ngIf="carsList$ | async as list">
+    <table mat-table
+           [dataSource]="list"
+           class="mat-elevation-z8">
+        <ng-container matColumnDef="brandName">
+            <th mat-header-cell
+                *matHeaderCellDef> Brand </th>
+            <td mat-cell
+                *matCellDef="let element"> {{ element.brandName }}</td>
+        </ng-container>
+        <ng-container matColumnDef="model">
+            <th mat-header-cell
+                *matHeaderCellDef> Model </th>
+            <td mat-cell
+                *matCellDef="let element"> {{element.model}} </td>
+        </ng-container>
+        <ng-container matColumnDef="securityFeatureName">
+            <th mat-header-cell
+                *matHeaderCellDef> Security Feature </th>
+            <td mat-cell
+                *matCellDef="let element"> {{element.securityFeatureName}} </td>
+        </ng-container>
+        <ng-container matColumnDef="comfortFeatureName">
+            <th mat-header-cell
+                *matHeaderCellDef> Comfort Feature </th>
+            <td mat-cell
+                *matCellDef="let element"> {{element.comfortFeatureName}} </td>
+        </ng-container>
+
+
+        <tr mat-header-row
+            *matHeaderRowDef="['brandName', 'model', 'securityFeatureName', 'comfortFeatureName' ]"></tr>
+        <tr mat-row
+            *matRowDef="let row; columns: ['brandName', 'model', 'securityFeatureName', 'comfortFeatureName'];"></tr>
+    </table>
+</ng-container>

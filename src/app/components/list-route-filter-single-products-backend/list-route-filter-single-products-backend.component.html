@@ -1,0 +1,46 @@
+<h1>Categories</h1>
+<ng-container *ngIf="categoriesList$ | async as categories; else loaderProgressBar">
+    <ng-container *ngIf="categories.length > 0; else empty">
+        <mat-selection-list role="list"
+                            fxLayout="row"
+                            [multiple]="false">
+            <mat-list-option role="listoption"
+                             *ngFor="let category of categories"
+                             [value]="category"
+                             (click)="onCategorySelect(category)"
+                             [routerLink]="[]">
+                {{category}}
+            </mat-list-option>
+        </mat-selection-list>
+    </ng-container>
+</ng-container>
+<!--  -->
+<br><br>
+<h1>Products</h1>
+<ng-container *ngIf="productsList$ | async as products; else loaderSpinner">
+    <ng-container *ngIf="products.length > 0; else empty">
+        <mat-list role="list">
+            <mat-list-item role="listitem"
+                           *ngFor="let product of products">
+                {{product.title}}
+            </mat-list-item>
+        </mat-list>
+    </ng-container>
+</ng-container>
+
+<ng-template #loaderProgressBar>
+    <mat-progress-bar class="example-margin"
+                      [color]="'primary'"
+                      [mode]="'indeterminate'"
+                      [value]="50">
+    </mat-progress-bar>
+</ng-template>
+<ng-template #loaderSpinner>
+    <mat-progress-spinner [color]="'primary'"
+                          [mode]="'indeterminate'"
+                          [value]="50">
+    </mat-progress-spinner>
+</ng-template>
+<ng-template #empty>
+    There is no data.
+</ng-template>

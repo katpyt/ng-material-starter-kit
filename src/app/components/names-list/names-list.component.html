@@ -1,0 +1,18 @@
+<mat-list role="list" *ngIf="names$ | async as names; else loader">
+    <ng-container *ngIf="names.length > 0 ; else empty">
+        <mat-list-item role="listitem" *ngFor="let item of names; index as i">
+            {{i+1}}. {{item.name}}
+        </mat-list-item>
+    </ng-container>
+</mat-list>
+
+<ng-template #empty>
+    There is no data.
+</ng-template>
+
+<ng-template #loader>
+    <mat-progress-spinner [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+    </mat-progress-spinner>
+</ng-template>

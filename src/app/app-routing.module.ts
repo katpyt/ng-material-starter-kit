@@ -1,8 +1,196 @@
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ProductListComponent } from './components/product-list-old/product-list.component';
+import { NamesListComponent } from './components/names-list/names-list.component';
+import { CryptoListComponent } from './components/crypto-list/crypto-list.component';
+import { CategoryListComponent } from './components/category-list/category-list.component';
+import { CategoryMenuComponent } from './components/category-menu/category-menu.component';
+import { CryptoRadioListComponent } from './components/crypto-radio-list/crypto-radio-list.component';
+import { HolidayListComponent } from './components/holiday-list/holiday-list.component';
+import { CategorySelectionListComponent } from './components/category-selection-list/category-selection-list.component';
+import { NamesTableComponent } from './components/names-table/names-table.component';
+import { ProductMultiListComponent } from './components/product-multi-list/product-multi-list.component';
+import { ProductsTableComponent } from './components/products-table/products-table.component';
+import { CryptoTableComponent } from './components/crypto-table/crypto-table.component';
+import { JobPostTableComponent } from './components/job-post-table/job-post-table.component';
+import { JobPostGridComponent } from './components/job-post-grid/job-post-grid.component';
+import { InfluencerNestedListComponent } from './components/influencer-nested-list/influencer-nested-list.component';
+import { InfluencerNestedTreeComponent } from './components/influencer-nested-tree/influencer-nested-tree.component';
+import { FormComponent } from './components/form/form.component';
+import { AddProductComponent } from './components/add-product/add-product.component';
+import { FormControlNameComponent } from './components/form-control-name/form-control-name.component';
+import { UserRolesComponent } from './components/user-roles/user-roles.component';
+import { UniversityRadioListComponent } from './components/university-radio-list/university-radio-list.component';
+import { UserLoginComponent } from './components/user-login/user-login.component';
+import { FormGroupSelectProductComponent } from './components/form-group-select-product/form-group-select-product.component';
+import { FormGroupRegisterUserRolesComponent } from './components/form-group-register-user-roles/form-group-register-user-roles.component';
+import { FormGroupRadioRegisterUserRolesComponent } from './components/form-group-radio-register-user-roles-component/form-group-radio-register-user-roles.component';
+import { FormGroupRadioUserAndGenderComponent } from './components/form-group-radio-user-and-gender/form-group-radio-user-and-gender.component';
+import { FormGroupNestedUserComponent } from './components/form-group-nested-user/form-group-nested-user.component';
+import { FormGroupNestedOrderComponent } from './components/form-group-nested-order/form-group-nested-order.component';
+import { FilteringSingleProductCategoryComponent } from './components/filtering-single-product-category/filtering-single-product-category.component';
+import { SubjectFilteringSingleBeProductComponent } from './components/subject-filtering-single-be-product/subject-filtering-single-be-product.component';
+import { SubjectFilteringSingleUsersComponent } from './components/subject-filtering-single-users/subject-filtering-single-users.component';
+import { SubjectSortingSingleProductComponent } from './components/subject-sorting-single-product/subject-sorting-single-product.component';
+import { SubjectSortSingleBeProductComponent } from './components/subject-sort-single-be-product/subject-sort-single-be-product.component';
+import { SubjectSortingSingleUsersComponent } from './components/subject-sorting-single-users/subject-sorting-single-users.component';
+import { SubjectFilterMultiUsersComponent } from './components/subject-filter-multi-users/subject-filter-multi-users.component';
+import { SubjectSortingFieldCryptoComponent } from './components/subject-sorting-field-crypto/subject-sorting-field-crypto.component';
+import { SubjectFilterSortMultiUsersComponent } from './components/subject-filter-sort-multi-users/subject-filter-sort-multi-users.component';
+import { SubjectPaginationBeBeersComponent } from './components/subject-pagination-be-beers/subject-pagination-be-beers.component';
+import { ListFormSortSingleProductsComponent } from './components/list-form-sort-single-products/list-form-sort-single-products.component';
+import { ListFormSortMultiJobsComponent } from './components/list-form-sort-multi-jobs/list-form-sort-multi-jobs.component';
+import { ListFormFilterSingleProductsRadioComponent } from './components/list-form-filter-single-products-radio/list-form-filter-single-products-radio.component';
+import { ListFormFilterMultiUsersComponent } from './components/list-form-filter-multi-users/list-form-filter-multi-users.component';
+import { ListFormSearchSingleUniversityBackendComponent } from './components/list-form-search-single-university-backend/list-form-search-single-university-backend.component';
+import { ListFormSearchMultiProductComponent } from './components/list-form-search-multi-product/list-form-search-multi-product.component';
+import { ListFormAutocompleteSingleCryptoChipsComponent } from './components/list-form-autocomplete-single-crypto-chips/list-form-autocomplete-single-crypto-chips.component';
+import { ListFormAutocompleteMultiCarsComponent } from './components/list-form-autocomplete-multi-cars/list-form-autocomplete-multi-cars.component';
+import { EditJobsFormComponent } from './components/edit-jobs-form/edit-jobs-form.component';
+import { ListRouteSortSingleProductsBackendComponent } from './components/list-route-sort-single-products-backend/list-route-sort-single-products-backend.component';
+import { SearchRouteMultiJobsComponent } from './components/search-route-multi-jobs/search-route-multi-jobs.component';
+import { ListRouteFilterSingleProductsBackendComponent } from './components/list-route-filter-single-products-backend/list-route-filter-single-products-backend.component';
+import { DetailsAgePredictionComponent } from './components/details-age-prediction/details-age-prediction.component';
+import { EditProductWithUploadComponent } from './components/edit-product-with-upload/edit-product-with-upload.component';
+import { ListRouteFilterMultiCardsFrontendComponent } from './components/list-route-filter-multi-cards-frontend/list-route-filter-multi-cards-frontend.component';
+import { RouteLimitSingleProductsComponent } from './components/route-limit-single-products/route-limit-single-products.component';
+import { RoutePaginationFrontendCitiesComponent } from './components/route-pagination-frontend-cities/route-pagination-frontend-cities.component';
+import { QueryStringSingleUserComponent } from './components/query-string-single-user/query-string-single-user.component';
+import { QueryArraySingleJobComponent } from './components/query-array-single-job/query-array-single-job.component';
+import { QueryStringMultiUserComponent } from './components/query-string-multi-user/query-string-multi-user.component';
+import { QueryLoaderNamesComponent } from './components/query-loader-names/query-loader-names.component';
+import { QuerySingleNestedAccordionProductsWithStockComponent } from './components/query-single-nested-accordion-products-with-stock/query-single-nested-accordion-products-with-stock.component';
+import { ProductListComponentModule } from './components/product-list-old/product-list.component-module';
+import { NamesListComponentModule } from './components/names-list/names-list.component-module';
+import { CryptoListComponentModule } from './components/crypto-list/crypto-list.component-module';
+import { CategoryListComponentModule } from './components/category-list/category-list.component-module';
+import { CategoryMenuComponentModule } from './components/category-menu/category-menu.component-module';
+import { CryptoRadioListComponentModule } from './components/crypto-radio-list/crypto-radio-list.component-module';
+import { HolidayListComponentModule } from './components/holiday-list/holiday-list.component-module';
+import { CategorySelectionListComponentModule } from './components/category-selection-list/category-selection-list.component-module';
+import { NamesTableComponentModule } from './components/names-table/names-table.component-module';
+import { ProductMultiListComponentModule } from './components/product-multi-list/product-multi-list.component-module';
+import { ProductsTableComponentModule } from './components/products-table/products-table.component-module';
+import { CryptoTableComponentModule } from './components/crypto-table/crypto-table.component-module';
+import { JobPostTableComponentModule } from './components/job-post-table/job-post-table.component-module';
+import { JobPostGridComponentModule } from './components/job-post-grid/job-post-grid.component-module';
+import { InfluencerNestedListComponentModule } from './components/influencer-nested-list/influencer-nested-list.component-module';
+import { InfluencerNestedTreeComponentModule } from './components/influencer-nested-tree/influencer-nested-tree.component-module';
+import { FormComponentModule } from './components/form/form.component-module';
+import { AddProductComponentModule } from './components/add-product/add-product.component-module';
+import { FormControlNameComponentModule } from './components/form-control-name/form-control-name.component-module';
+import { UserRolesComponentModule } from './components/user-roles/user-roles.component-module';
+import { UniversityRadioListComponentModule } from './components/university-radio-list/university-radio-list.component-module';
+import { UserLoginComponentModule } from './components/user-login/user-login.component-module';
+import { FormGroupSelectProductComponentModule } from './components/form-group-select-product/form-group-select-product.component-module';
+import { FormGroupRegisterUserRolesComponentModule } from './components/form-group-register-user-roles/form-group-register-user-roles.component-module';
+import { FormGroupRadioRegisterUserRolesComponentModule } from './components/form-group-radio-register-user-roles-component/form-group-radio-register-user-roles.component-module';
+import { FormGroupRadioUserAndGenderComponentModule } from './components/form-group-radio-user-and-gender/form-group-radio-user-and-gender.component-module';
+import { FormGroupNestedUserComponentModule } from './components/form-group-nested-user/form-group-nested-user.component-module';
+import { FormGroupNestedOrderComponentModule } from './components/form-group-nested-order/form-group-nested-order.component-module';
+import { FilteringSingleProductCategoryComponentModule } from './components/filtering-single-product-category/filtering-single-product-category.component-module';
+import { SubjectFilteringSingleBeProductComponentModule } from './components/subject-filtering-single-be-product/subject-filtering-single-be-product.component-module';
+import { SubjectFilteringSingleUsersComponentModule } from './components/subject-filtering-single-users/subject-filtering-single-users.component-module';
+import { SubjectSortingSingleProductComponentModule } from './components/subject-sorting-single-product/subject-sorting-single-product.component-module';
+import { SubjectSortSingleBeProductComponentModule } from './components/subject-sort-single-be-product/subject-sort-single-be-product.component-module';
+import { SubjectSortingSingleUsersComponentModule } from './components/subject-sorting-single-users/subject-sorting-single-users.component-module';
+import { SubjectFilterMultiUsersComponentModule } from './components/subject-filter-multi-users/subject-filter-multi-users.component-module';
+import { SubjectSortingFieldCryptoComponentModule } from './components/subject-sorting-field-crypto/subject-sorting-field-crypto.component-module';
+import { SubjectFilterSortMultiUsersComponentModule } from './components/subject-filter-sort-multi-users/subject-filter-sort-multi-users.component-module';
+import { SubjectPaginationBeBeersComponentModule } from './components/subject-pagination-be-beers/subject-pagination-be-beers.component-module';
+import { ListFormSortSingleProductsComponentModule } from './components/list-form-sort-single-products/list-form-sort-single-products.component-module';
+import { ListFormSortMultiJobsComponentModule } from './components/list-form-sort-multi-jobs/list-form-sort-multi-jobs.component-module';
+import { ListFormFilterSingleProductsRadioComponentModule } from './components/list-form-filter-single-products-radio/list-form-filter-single-products-radio.component-module';
+import { ListFormFilterMultiUsersComponentModule } from './components/list-form-filter-multi-users/list-form-filter-multi-users.component-module';
+import { ListFormSearchSingleUniversityBackendComponentModule } from './components/list-form-search-single-university-backend/list-form-search-single-university-backend.component-module';
+import { ListFormSearchMultiProductComponentModule } from './components/list-form-search-multi-product/list-form-search-multi-product.component-module';
+import { ListFormAutocompleteSingleCryptoChipsComponentModule } from './components/list-form-autocomplete-single-crypto-chips/list-form-autocomplete-single-crypto-chips.component-module';
+import { ListFormAutocompleteMultiCarsComponentModule } from './components/list-form-autocomplete-multi-cars/list-form-autocomplete-multi-cars.component-module';
+import { EditJobsFormComponentModule } from './components/edit-jobs-form/edit-jobs-form.component-module';
+import { ListRouteSortSingleProductsBackendComponentModule } from './components/list-route-sort-single-products-backend/list-route-sort-single-products-backend.component-module';
+import { SearchRouteMultiJobsComponentModule } from './components/search-route-multi-jobs/search-route-multi-jobs.component-module';
+import { ListRouteFilterSingleProductsBackendComponentModule } from './components/list-route-filter-single-products-backend/list-route-filter-single-products-backend.component-module';
+import { DetailsAgePredictionComponentModule } from './components/details-age-prediction/details-age-prediction.component-module';
+import { EditProductWithUploadComponentModule } from './components/edit-product-with-upload/edit-product-with-upload.component-module';
+import { ListRouteFilterMultiCardsFrontendComponentModule } from './components/list-route-filter-multi-cards-frontend/list-route-filter-multi-cards-frontend.component-module';
+import { RouteLimitSingleProductsComponentModule } from './components/route-limit-single-products/route-limit-single-products.component-module';
+import { RoutePaginationFrontendCitiesComponentModule } from './components/route-pagination-frontend-cities/route-pagination-frontend-cities.component-module';
+import { QueryStringSingleUserComponentModule } from './components/query-string-single-user/query-string-single-user.component-module';
+import { QueryArraySingleJobComponentModule } from './components/query-array-single-job/query-array-single-job.component-module';
+import { QueryStringMultiUserComponentModule } from './components/query-string-multi-user/query-string-multi-user.component-module';
+import { QueryLoaderNamesComponentModule } from './components/query-loader-names/query-loader-names.component-module';
+import { QuerySingleNestedAccordionProductsWithStockComponentModule } from './components/query-single-nested-accordion-products-with-stock/query-single-nested-accordion-products-with-stock.component-module';
 
 @NgModule({
-  imports: [RouterModule.forRoot([])],
+  imports: [RouterModule.forRoot([
+    { path: 'products', component: ProductListComponent },
+    { path: 'names-list', component: NamesListComponent },
+    { path: 'crypto', component: CryptoListComponent },
+    { path: 'checkbox-categories', component: CategoryListComponent },
+    { path: 'categories-menu', component: CategoryMenuComponent },
+    { path: 'crypto-radio-list', component: CryptoRadioListComponent },
+    { path: 'public-holidays', component: HolidayListComponent },
+    { path: 'categories', component: CategorySelectionListComponent },
+    { path: 'list-1-single-table-names', component: NamesTableComponent },
+    { path: 'list-1-multi-list-products', component: ProductMultiListComponent },
+    { path: 'product-search', component: ProductsTableComponent },
+    { path: 'crypto-table', component: CryptoTableComponent },
+    { path: 'job-post-table', component: JobPostTableComponent },
+    { path: 'list-1-multi-grid-list-jobs', component: JobPostGridComponent },
+    { path: 'list-1-nested-list-and-chips-influencers', component: InfluencerNestedListComponent },
+    { path: 'list-1-nested-tree-influencers', component: InfluencerNestedTreeComponent },
+    { path: 'form', component: FormComponent },
+    { path: 'add-product', component: AddProductComponent },
+    { path: 'form-1-control-name', component: FormControlNameComponent },
+    { path: 'user-roles', component: UserRolesComponent },
+    { path: 'university-radio-list', component: UniversityRadioListComponent },
+    { path: 'login', component: UserLoginComponent },
+    { path: 'form-1-group-select-product', component: FormGroupSelectProductComponent },
+    { path: 'register-with-role', component: FormGroupRegisterUserRolesComponent },
+    { path: 'register-with-role-radio', component: FormGroupRadioRegisterUserRolesComponent },
+    { path: 'form-group-radio-user-and-gender', component: FormGroupRadioUserAndGenderComponent },
+    { path: 'form-1-group-nested-user', component: FormGroupNestedUserComponent },
+    { path: 'form-group-nested-order', component: FormGroupNestedOrderComponent },
+    { path: 'filtering-single-product-category', component: FilteringSingleProductCategoryComponent },
+    { path: 'subject-filtering-single-be-product', component: SubjectFilteringSingleBeProductComponent },
+    { path: 'subject-filtering-single-users', component: SubjectFilteringSingleUsersComponent },
+    { path: 'subject-sorting-single-product', component: SubjectSortingSingleProductComponent },
+    { path: 'subject-sort-single-be-product', component: SubjectSortSingleBeProductComponent },
+    { path: 'subject-sorting-single-users', component: SubjectSortingSingleUsersComponent },
+    { path: 'subject-filter-multi-users', component: SubjectFilterMultiUsersComponent },
+    { path: 'subject-sorting-field-crypto', component: SubjectSortingFieldCryptoComponent },
+    { path: 'subject-filter-sort-multi-users', component: SubjectFilterSortMultiUsersComponent },
+    { path: 'subject-pagination-be-beers', component: SubjectPaginationBeBeersComponent },
+    { path: 'list-2-form-sort-single-products', component: ListFormSortSingleProductsComponent },
+    { path: 'list-2-form-sort-multi-jobs', component: ListFormSortMultiJobsComponent },
+    { path: 'list-2-form-filter-single-products-radio', component: ListFormFilterSingleProductsRadioComponent },
+    { path: 'list-2-form-filter-multi-users', component: ListFormFilterMultiUsersComponent },
+    { path: 'list-2-form-search-single-university-backend', component: ListFormSearchSingleUniversityBackendComponent },
+    { path: 'list-2-form-search-multi-product', component: ListFormSearchMultiProductComponent },
+    { path: 'list-2-form-autocomplete-single-cryptoChips', component: ListFormAutocompleteSingleCryptoChipsComponent },
+    { path: 'list-2-form-autocomplete-multi-cars', component: ListFormAutocompleteMultiCarsComponent },
+    { path: 'edit-jobs-form', component: EditJobsFormComponent },
+    { path: 'edit-jobs-form/:id', component: EditJobsFormComponent },
+    { path: 'list-2-route-sort-single-products-backend', component: ListRouteSortSingleProductsBackendComponent },
+    { path: 'list-2-route-sort-single-products-backend?sort=:sort', component: ListRouteSortSingleProductsBackendComponent },
+    { path: 'search-route-multi-jobs', component: SearchRouteMultiJobsComponent },
+    { path: 'search-route-multi-jobs?search=:keyWord', component: SearchRouteMultiJobsComponent },
+    { path: 'list-2-route-filter-single-products-backend', component: ListRouteFilterSingleProductsBackendComponent },
+    { path: 'list-2-route-filter-single-products-backend/:category', component: ListRouteFilterSingleProductsBackendComponent },
+    { path: 'details-age-prediction', component: DetailsAgePredictionComponent },
+    { path: 'edit-product-with-upload', component: EditProductWithUploadComponent },
+    { path: 'edit-product-with-upload/:id', component: EditProductWithUploadComponent },
+    { path: 'list-2-route-filter-multi-cards-frontend', component: ListRouteFilterMultiCardsFrontendComponent },
+    { path: 'list-2-route-filter-multi-cards-frontend?brand=:brand&comfortFeature=:comfortFeature', component: ListRouteFilterMultiCardsFrontendComponent },
+    { path: 'route-limit-single-products', component: RouteLimitSingleProductsComponent },
+    { path: 'route-limit-single-products/limit=:limit', component: RouteLimitSingleProductsComponent },
+    { path: 'route-pagination-frontend-cities', component: RoutePaginationFrontendCitiesComponent },
+    { path: 'query-string-single-user', component: QueryStringSingleUserComponent },
+    { path: 'query-array-single-job', component: QueryArraySingleJobComponent },
+    { path: 'query-string-multi-user', component: QueryStringMultiUserComponent },
+    { path: 'query-loader-names', component: QueryLoaderNamesComponent },
+    { path: 'query-single-nested-accordion-productsWithStock', component: QuerySingleNestedAccordionProductsWithStockComponent }
+  ]), ProductListComponentModule, NamesListComponentModule, CryptoListComponentModule, CategoryListComponentModule, CategoryMenuComponentModule, CryptoRadioListComponentModule, HolidayListComponentModule, CategorySelectionListComponentModule, NamesTableComponentModule, ProductMultiListComponentModule, ProductsTableComponentModule, CryptoTableComponentModule, JobPostTableComponentModule, JobPostGridComponentModule, InfluencerNestedListComponentModule, InfluencerNestedTreeComponentModule, FormComponentModule, AddProductComponentModule, FormControlNameComponentModule, UserRolesComponentModule, UniversityRadioListComponentModule, UserLoginComponentModule, FormGroupSelectProductComponentModule, FormGroupRegisterUserRolesComponentModule, FormGroupRadioRegisterUserRolesComponentModule, FormGroupRadioUserAndGenderComponentModule, FormGroupNestedUserComponentModule, FormGroupNestedOrderComponentModule, FilteringSingleProductCategoryComponentModule, SubjectFilteringSingleBeProductComponentModule, SubjectFilteringSingleUsersComponentModule, SubjectSortingSingleProductComponentModule, SubjectSortSingleBeProductComponentModule, SubjectSortingSingleUsersComponentModule, SubjectFilterMultiUsersComponentModule, SubjectSortingFieldCryptoComponentModule, SubjectFilterSortMultiUsersComponentModule, SubjectPaginationBeBeersComponentModule, ListFormSortSingleProductsComponentModule, ListFormSortMultiJobsComponentModule, ListFormFilterSingleProductsRadioComponentModule, ListFormFilterMultiUsersComponentModule, ListFormSearchSingleUniversityBackendComponentModule, ListFormSearchMultiProductComponentModule, ListFormAutocompleteSingleCryptoChipsComponentModule, ListFormAutocompleteMultiCarsComponentModule, EditJobsFormComponentModule, ListRouteSortSingleProductsBackendComponentModule, SearchRouteMultiJobsComponentModule, ListRouteFilterSingleProductsBackendComponentModule, DetailsAgePredictionComponentModule, EditProductWithUploadComponentModule, ListRouteFilterMultiCardsFrontendComponentModule, RouteLimitSingleProductsComponentModule, RoutePaginationFrontendCitiesComponentModule, QueryStringSingleUserComponentModule, QueryArraySingleJobComponentModule, QueryStringMultiUserComponentModule, QueryLoaderNamesComponentModule, QuerySingleNestedAccordionProductsWithStockComponentModule],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

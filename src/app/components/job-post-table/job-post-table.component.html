@@ -1,0 +1,33 @@
+ <ng-container *ngIf="list$ | async as list">
+    <table mat-table [dataSource]="list" class="mat-elevation-z8">         
+    <ng-container matColumnDef="title">
+        <th mat-header-cell *matHeaderCellDef> Title </th>
+        <td mat-cell *matCellDef="let element"> {{ element.title }} </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="tags" *ngIf="tags$ | async as tags">
+        <th mat-header-cell *matHeaderCellDef> Tags </th>
+        <td mat-cell *matCellDef="let element;" > {{ tags[element.jobTagIds[0]].name}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="['title', 'description', 'tags']"></tr>
+    <tr mat-row *matRowDef="let row; columns: ['title', 'description', 'tags'];"></tr>  
+    </table>
+</ng-container>
+
+<ng-template #empty>
+    Ooops! There is nor data!
+</ng-template>
+
+<ng-template #loader>
+    <mat-progress-spinner
+        [color]="'primary'"
+        [mode]="'indeterminate'"
+        [value]="50">
+      </mat-progress-spinner>
+</ng-template>

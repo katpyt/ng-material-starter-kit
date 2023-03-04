@@ -1,0 +1,29 @@
+<mat-button-toggle-group [formControl]="toggleControlButtons">
+    <mat-button-toggle *ngFor="let item of toggleData$ | async"
+                       [value]="item"
+                       [routerLink]="[]">{{item}}
+    </mat-button-toggle>
+</mat-button-toggle-group>
+
+<h1></h1>
+
+<button mat-button
+        [matMenuTriggerFor]="menu">
+    <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item
+            *ngFor="let item of toggleData$ | async"
+            [disabled]="item === toggleControlButtons.value"
+            (click)="onButtonClicked(+item)">
+        {{item}}
+    </button>
+</mat-menu>
+
+<h1>Products</h1>
+<mat-list role="list">
+    <mat-list-item role="listitem"
+                   *ngFor="let item of products$ | async">
+        {{item.title}}
+    </mat-list-item>
+</mat-list>
