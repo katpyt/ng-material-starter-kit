@@ -14,26 +14,26 @@ import { SnackBarService } from '../../services/snack-bar.service';
 
 export class QuerySingleNestedAccordionProductsWithStockComponent {
 
-  readonly product$: Observable<ProductWithStockQueryModel[]> = this._snackBarService.getAll().pipe(
-    map((products) =>
+  // readonly product$: Observable<ProductWithStockQueryModel[]> = this._snackBarService.getAll().pipe(
+  //   map((products) =>
 
-      products.map(product => {
-        const productStock: SnackBarMetadataModel = this._snackBarService.getProductMetadata(product.id).pipe(
-          map((metaData) => {
-            return metaData.reduce(
-              (a: SnackBarMetadataModel, b: SnackBarMetadataModel) => ({ ...a, [b.stock]: a.stock + b.stock })
-            )
-          })
-        );
+  //     products.map(product => {
+  //       const productStock: SnackBarMetadataModel = this._snackBarService.getProductMetadata(product.id).pipe(
+  //         map((metaData) => {
+  //           return metaData.reduce(
+  //             (a: SnackBarMetadataModel, b: SnackBarMetadataModel) => ({ ...a, [b.stock]: a.stock + b.stock })
+  //           )
+  //         })
+  //       );
 
 
-        return {
-          productName: product.name,
-          productPrice: product.price,
-          stockValue: productStock['stock']
-        }
-      }))
-  );
+  //       return {
+  //         productName: product.name,
+  //         productPrice: product.price,
+  //         stockValue: productStock['stock']
+  //       }
+  //     }))
+  // );
 
   constructor(private _snackBarService: SnackBarService) {
   }
