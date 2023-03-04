@@ -13,8 +13,6 @@ import { SnackBarService } from '../../services/snack-bar.service';
 })
 
 export class QuerySingleNestedAccordionProductsWithStockComponent {
-  //test
-
   // readonly product$: Observable<ProductWithStockQueryModel[]> = this._snackBarService.getAll().pipe(
   //   map((products) =>
 
