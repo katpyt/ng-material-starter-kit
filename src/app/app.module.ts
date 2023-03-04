@@ -15,7 +15,7 @@ import { CurrencyPipe } from '@angular/common';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [{ provide: DEFAULT_CURRENCY_CODE, useValue: 'USD' }],
   bootstrap: [AppComponent]

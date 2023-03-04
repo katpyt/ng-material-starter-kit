@@ -15,7 +15,7 @@ import { UserWithAvatarService } from '../../services/user-with-avatar.service';
 export class SubjectModelInMemoryUserComponent {
   private _userListSubject: BehaviorSubject<void> = new BehaviorSubject<void>(void 0);
   public userList$: Observable<UserWithAvatarModel[]> = this._userListSubject.asObservable().pipe(switchMap(() => this._userWithAvatarService.getAllUsers()));
-  
+
   private _userDetailsSubject: ReplaySubject<UserWithAvatarModel> = new ReplaySubject<UserWithAvatarModel>();
   public userDetails$: Observable<UserWithAvatarModel> = this._userDetailsSubject.asObservable();
 
@@ -26,7 +26,7 @@ export class SubjectModelInMemoryUserComponent {
     this._userDetailsSubject.next(user);
   }
 
-  onCancelClicked(){
+  onCancelClicked() {
     this._userDetailsSubject.next(undefined as any);
   }
 }
