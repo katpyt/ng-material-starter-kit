@@ -38,4 +38,6 @@ export class QuerySingleNestedAccordionProductsWithStockComponent {
 
   constructor(private _snackBarService: SnackBarService) {
   }
+
+
 }
