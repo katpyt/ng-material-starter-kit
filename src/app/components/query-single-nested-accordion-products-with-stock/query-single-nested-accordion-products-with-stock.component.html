@@ -1,0 +1,29 @@
+<ng-container *ngIf="product$ | async as products; else loader;">
+    <ng-container *ngIf="!products then empty;"></ng-container>
+    <ng-container *ngIf="products">
+        <mat-accordion>
+            <mat-expansion-panel *ngFor="let product of products">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{product.productName}} {{product.productPrice | currency: 'USD'}}
+                    </mat-panel-title>
+                    <mat-panel-description>
+
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+                In stock: {{product.stockValue}}
+            </mat-expansion-panel>
+        </mat-accordion>
+    </ng-container>
+</ng-container>
+
+<ng-template #empty>
+    There is no data.
+</ng-template>
+
+<ng-template #loader>
+    <mat-progress-spinner [color]="'primary'"
+                          [mode]="'indeterminate'"
+                          [value]="50">
+    </mat-progress-spinner>
+</ng-template>

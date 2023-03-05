@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import { combineLatest, map, Observable, reduce, switchMap } from 'rxjs';
+import { combineLatest, elementAt, forkJoin, map, Observable, reduce, switchMap } from 'rxjs';
 import { ProductWithStockQueryModel } from 'src/app/queries/product-with-stock.query-model';
 import { OrderProductModel } from '../../models/order.model';
 import { SnackBarMetadataModel } from '../../models/snack-bar-metadata.model';
@@ -13,24 +13,23 @@ import { SnackBarService } from '../../services/snack-bar.service';
 })
 
 export class QuerySingleNestedAccordionProductsWithStockComponent {
-  //test
+
   readonly product$: Observable<ProductWithStockQueryModel[]> = this._snackBarService.getAll().pipe(
-    map((products) =>
-
-      products.map(product => {
-        const stockForProductId: number = this._snackBarService.getProductMetadata(product.id)
-          .pipe(
-            map((data) => (
-              data.reduce((a, b) => (a + b.stock), 0)
-            ))
-          );
-
-        return {
-          productName: product.name,
-          productPrice: product.price,
-          stockValue: stockForProductId
-        }
-      }))
+    switchMap((products) =>
+      forkJoin(products.map((product) =>
+        this._snackBarService.getProductMetadata(product.id)
+      )).pipe(
+        map((stocks: SnackBarMetadataModel[][]) =>
+          products.map((element, index) => {
+            return {
+              productName: element.name,
+              productPrice: element.price,
+              stockValue: stocks[index][0].stock
+            }
+          })
+        )
+      )
+    )
   );
 
   constructor(private _snackBarService: SnackBarService) {

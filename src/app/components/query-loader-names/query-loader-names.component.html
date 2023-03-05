@@ -1,15 +1,18 @@
 <ng-container *ngIf="namesList$ | async as names">
-    <ng-container *ngIf="!names.isLoading; else loader">
-        <ng-container *ngIf="!names.error; else empty">
-            <mat-list role="list">
-                <mat-list-item role="listitem"
-                               *ngFor="let name of names.value">
-                    {{name}}
-                </mat-list-item>
-            </mat-list>
-        </ng-container>
+    <ng-container *ngIf="names.isLoading then loader">
+    </ng-container>
+    <ng-container *ngIf="names.error then error">
+    </ng-container>
+    <ng-container *ngIf="!names.error">
+        <mat-list role="list">
+            <mat-list-item role="listitem"
+                           *ngFor="let name of names.value">
+                {{name}}
+            </mat-list-item>
+        </mat-list>
     </ng-container>
 </ng-container>
+
 <br>
 <button mat-raised-button
         color="primary"
@@ -22,6 +25,6 @@
                           [value]="50">
     </mat-progress-spinner>
 </ng-template>
-<ng-template #empty>
-    There is no data.
+<ng-template #error>
+    Ooops, something went wrong.
 </ng-template>
