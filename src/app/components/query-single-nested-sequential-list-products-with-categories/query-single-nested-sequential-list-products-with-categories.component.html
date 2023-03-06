@@ -1,22 +1,19 @@
 <ng-container *ngIf="productList$ | async as products; else loader;">
-    <ng-container *ngFor="let product of products">
-
-        <mat-card>
-            <mat-card-title>
-                {{product.productName}} for only {{product.productPrice | currency: 'USD'}}
-            </mat-card-title>
-            <mat-card-content>
-                <p>Other products:</p>
-                <ng-container>
-                    <mat-chip-list aria-label="Fish selection">
-                        <mat-chip *ngFor="let other of product.otherProducts">
-                            {{other.title}}
-                        </mat-chip>
-                    </mat-chip-list>
-                </ng-container>
-            </mat-card-content>
-        </mat-card>
-    </ng-container>
+    <mat-card *ngFor="let product of products">
+        <mat-card-title>
+            {{product.productName}} for only {{product.productPrice | currency: 'USD'}}
+        </mat-card-title>
+        <mat-card-content>
+            <p>Other products:</p>
+            <ng-container>
+                <mat-chip-list aria-label="Fish selection">
+                    <mat-chip *ngFor="let other of product.otherProducts">
+                        {{other.title}}
+                    </mat-chip>
+                </mat-chip-list>
+            </ng-container>
+        </mat-card-content>
+    </mat-card>
 </ng-container>
 
 <ng-template #loader>

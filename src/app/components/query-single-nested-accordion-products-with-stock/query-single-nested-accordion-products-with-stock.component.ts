@@ -14,17 +14,34 @@ import { SnackBarService } from '../../services/snack-bar.service';
 
 export class QuerySingleNestedAccordionProductsWithStockComponent {
 
-  readonly product$: Observable<ProductWithStockQueryModel[]> = this._snackBarService.getAll().pipe(
-    switchMap((products) =>
-      forkJoin(products.map((product) =>
-        this._snackBarService.getProductMetadata(product.id)
-      )).pipe(
-        map((stocks: SnackBarMetadataModel[][]) =>
+  // readonly product$: Observable<ProductWithStockQueryModel[]> = this._snackBarService.getAllProducts().pipe(
+  //   switchMap((products) =>
+  //     forkJoin(products.map((product) =>
+  //       this._snackBarService.getProductMetadata(product.id)
+  //     )).pipe(
+  //       map((stocks: SnackBarMetadataModel[][]) => //pamieta kolejnosc dodawania elementów
+  //         products.map((element, index) => {
+  //           return {
+  //             productName: element.name,
+  //             productPrice: element.price,
+  //             stockValue: stocks[index].reduce((acc, curr) => acc + curr.stock, 0)
+  //           }
+  //         })
+  //       )
+  //     )
+  //   )
+  // );
+
+  //alternatywa z forkJoin w service =>
+  readonly product$: Observable<ProductWithStockQueryModel[]> = this._snackBarService.getAllProducts().pipe(
+    switchMap((products) => this._snackBarService.getProductMetadataWithFork(products.map(p => p.id))
+      .pipe(
+        map((stocks: SnackBarMetadataModel[][]) => //pamieta kolejnosc dodawania elementów
           products.map((element, index) => {
             return {
               productName: element.name,
               productPrice: element.price,
-              stockValue: stocks[index][0].stock
+              stockValue: stocks[index].reduce((acc, curr) => acc + curr.stock, 0)
             }
           })
         )

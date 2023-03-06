@@ -22,8 +22,8 @@
 
                             </mat-panel-description>
                         </mat-expansion-panel-header>
-                        <ng-container *ngFor="let a of team.usersAvatars | async">
-                            <p><img [src]="a.avatar"
+                        <ng-container *ngFor="let avatar of team.usersAvatars">
+                            <p><img [src]="avatar.avatarUrl"
                                      width="50px;"></p>
                         </ng-container>
                     </mat-expansion-panel>
