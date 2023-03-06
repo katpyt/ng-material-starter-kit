@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import { BehaviorSubject, concatMap, forkJoin, from, map, Observable, scan, shareReplay, switchMap, tap } from 'rxjs';
+import { concatMap, from, map, Observable, scan, switchMap } from 'rxjs';
 import { ProductsWithOtherFromCategoryQueryModel } from 'src/app/queries/products-with-other-from-category.query-model';
-import { ProductModel } from '../../models/product.model';
 import { ProductService } from '../../services/product.service';
 
 @Component({
@@ -17,7 +16,7 @@ export class QuerySingleNestedSequentialListProductsWithCategoriesComponent {
   // readonly list$: Observable<ProductsWithOtherFromCategoryQueryModel[]> = this.list.asObservable();
 
   // of() - tablica, tworzy obserwację
-  // from() - jesli przekazemay tablicę elementów i potem pipe, to nie mamy dostepu do wszystkich produktów, tylko do pojedynczego
+  // from() - jesli przekazemy tablicę elementów i potem pipe, to nie mamy dostepu do wszystkich produktów, tylko do pojedynczego
   readonly productList$: Observable<ProductsWithOtherFromCategoryQueryModel[]> = this._productService.getAllProducts()
     .pipe(
       switchMap((products) => from(products)

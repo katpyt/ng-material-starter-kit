@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
-import { combineLatest, elementAt, forkJoin, map, Observable, reduce, switchMap } from 'rxjs';
+import { map, Observable, switchMap } from 'rxjs';
 import { ProductWithStockQueryModel } from 'src/app/queries/product-with-stock.query-model';
-import { OrderProductModel } from '../../models/order.model';
 import { SnackBarMetadataModel } from '../../models/snack-bar-metadata.model';
 import { SnackBarService } from '../../services/snack-bar.service';
 
